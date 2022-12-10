@@ -12,11 +12,13 @@ body>div {
 header {
     flex: 0 0 65px;
     background-color:#277BC0;
+    display: flex;
+    align-items: center;
+    min-width: 385px;
 }
 
 #logo {
     margin-left: 10px;
-    margin-top: 5px;
     width: 160px;
 }
 
@@ -29,13 +31,13 @@ header {
 .category {
     flex: 0 0 40%;
     overflow-y: scroll;
-    min-width: 375px;
+    min-width: 385px;
 }
 
 .category::-webkit-scrollbar {
     height: 4px;
     width: 5px;
-    background: transparent;
+    background: rgb(232, 230, 230);
 }
 
 .category::-webkit-scrollbar:horizontal {
@@ -52,10 +54,13 @@ header {
     background-color: rgb(232, 230, 230);
     padding: 15px;
     z-index: 999;
+    display: flex;
 }
+
 
 .main {
     flex: 0 1 60%;
+    min-width: 385px;
     background-color: #FFF4CF;
     background-image: url("../img/bg3.png");
     background-blend-mode: color-burn;
@@ -86,6 +91,7 @@ header {
     display: flex;
     border-bottom: 1px solid;
     padding: 0 10px;
+    margin-bottom: 10px;
 }
 .small-category-title:hover {
     background-image: linear-gradient(to right, #277BC0 , #8ac9fc);
@@ -165,6 +171,39 @@ tr{
 tr:not(#term-title):hover{
     background-color: rgb(232, 230, 230, 0.5);
 }
+.rwd-search{
+    display: none;
+}
+#search-btn{
+    cursor: pointer;
+    background-color: rgb(37, 37, 37);
+    width:30px;
+    position: relative;
+}
+.search-input{
+    display: flex;
+}
+.search-bar>button{
+    background-color: rgb(37, 37, 37);
+    color:white;
+    border-radius: 1rem;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+    margin-left:5px;
+}
+.search-bar>button:hover, #search-btn:hover{
+    background-color: #277BC0;
+}
+#magnifier{
+    width: 70%;
+    position: absolute;
+    left: 3px;
+    top: 3px;
+}
+
+
+
 
 @keyframes shake {
     0% {
@@ -173,4 +212,41 @@ tr:not(#term-title):hover{
     100% {
       right: -5px;
     }
+}
+
+@media screen and (max-width:650px){
+    .rwd-search{
+        display: block;
+        margin-left:auto;
+        margin-right: 2rem;
+    }
+    .app{
+        display: block;
+    }
+    .category{
+        display: none
+    }
+    .category.open{
+        display: block;
+        height: 89vh;
+        overflow-y: scroll;
+    }
+    .main{
+        height: 100%;
+    }
+    body>div{
+        overflow: auto
+    }
+    .main.close{
+        display: none;
+    }
+    #rwd-findicon{
+        width: 20px;
+    }
+
+    #rwd-findicon:hover{
+        filter:opacity(0.8);
+        cursor: pointer;
+    }
+    
 }
