@@ -2,9 +2,9 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Hong Kong Local Slang</title>
     <link rel="stylesheet" href="./css/main.css">
 </head>
@@ -118,6 +118,14 @@
 
     <script src="./data.js"></script>
     <script>
+        init();
+
+        function init(){
+            let p = decodeURI(window.location.pathname).split("/")[2];
+            history.replaceState({}, "", p);
+            renderMain(p, false);
+        }
+
         const synth = window.speechSynthesis;
         const recognition = window.SpeechRecognition || window.webkitSpeechRecognition;
         function speak(text) {
@@ -284,6 +292,7 @@
             `
             document.querySelector(".main").innerHTML = template;
         }
+
 
         window.onpopstate = function(event) {
             let p = decodeURI(window.location.pathname).split("/")[2];

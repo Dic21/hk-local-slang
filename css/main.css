@@ -14,7 +14,7 @@ header {
     background-color:#277BC0;
     display: flex;
     align-items: center;
-    min-width: 385px;
+    min-width: 405px;
 }
 
 #logo {
@@ -31,7 +31,7 @@ header {
 .category {
     flex: 0 0 40%;
     overflow-y: scroll;
-    min-width: 385px;
+    min-width: 405px;
 }
 
 .category::-webkit-scrollbar {
@@ -60,7 +60,7 @@ header {
 
 .main {
     flex: 0 1 60%;
-    min-width: 385px;
+    min-width: 405px;
     background-color: #FFF4CF;
     background-image: url("../img/bg3.png");
     background-blend-mode: color-burn;
