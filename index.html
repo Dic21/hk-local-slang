@@ -110,18 +110,11 @@
                 <div class="result"></div>
             </div>
 
-
-
             <div class="main">
                 <img width="100%" src="./img/logo.png">
             </div>
         </div>
     </div>
-
-
-
-
-
 
     <script src="./data.js"></script>
     <script>
@@ -142,7 +135,8 @@
         }
 
         function handleIndexClick(){
-            window.location.reload();
+            window.location.replace("/");
+            history.pushState({}, "","/");
         }
 
         function handleClickDisplay(){
@@ -235,7 +229,6 @@
             }
         }
 
-
         function sound(text) {
             speak(text);
         }
@@ -243,7 +236,7 @@
         function handleClick(e) {
             e.preventDefault();
             const link = e.target.getAttribute("href");
-            renderMain(link);
+            renderMain(link, true);
 
             //responsive
             const content = document.querySelector(".category");
@@ -252,8 +245,7 @@
             main.classList.toggle("close");
         }
 
-        function renderMain(path) {
-
+        function renderMain(path, isPush) {
             let target = dict.find((word) => { return word.word === path })
             let heading = target.word;
             let meaning = target.meaning;
@@ -263,6 +255,10 @@
             exampleList.forEach((item, i)=>{
                 exampleDisplay += `${i+1}. ${item}</br>`;
             })
+
+            if(isPush){
+                history.pushState({}, "", path);
+            }
 
             let template = `
                 <table>
@@ -288,8 +284,12 @@
                 </table>
             `
             document.querySelector(".main").innerHTML = template;
-            //history.pushState(null, null, `${path}`);
         }
+
+        window.onpopstate = function(event) {
+            let p = decodeURI(window.location.pathname).slice(1);
+            renderMain(p, false);
+        };
 
 
 
