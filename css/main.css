@@ -62,11 +62,15 @@ header {
     flex: 0 1 60%;
     min-width: 405px;
     background-color: #FFF4CF;
-    background-image: url("../img/bg3.png");
+    background-image: url("../img/bg4.png");
     background-blend-mode: color-burn;
     padding: 20px;
     box-sizing: border-box;
     overflow: scroll;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
 }
 
 .main::-webkit-scrollbar {
@@ -183,6 +187,9 @@ tr:not(#term-title):hover{
 .search-input{
     display: flex;
 }
+#search{
+    width:130px;
+}
 .search-bar>button{
     background-color: rgb(37, 37, 37);
     color:white;
@@ -200,6 +207,19 @@ tr:not(#term-title):hover{
     position: absolute;
     left: 3px;
     top: 3px;
+}
+.main-logo-container{
+    align-items: center;
+    flex: 0 0 20%;
+    
+}
+.main-logo-container>img{
+    width:80%;
+    display: block;
+    margin: auto;
+}
+.main-content{
+    text-align: center;
 }
 
 
@@ -219,6 +239,10 @@ tr:not(#term-title):hover{
         display: block;
         margin-left:auto;
         margin-right: 2rem;
+    }
+    header, .category, .main{
+        width:100vw;
+        min-width:375px;
     }
     .app{
         display: block;
