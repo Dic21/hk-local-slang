@@ -232,6 +232,12 @@ const dict = [
         meaning: "「正」的意思，源於一位歌迷在網上稱讚他的偶像時忘記改變速成輸入法，而衍生出的潮語。MM7來自它的速成碼「一」、「一」的第7個選字。",
         example: ["MM7 呀，今日放假可以休息下"],
         english: "superb"
+    },
+    {
+        word: "Kick",
+        meaning: "棘手的意思，也可形容事件阻滯不前的情況",
+        example: ["呢份工作好Kick，需要多啲時間"],
+        english: "tricky, thorny"
     }
     
 ]
