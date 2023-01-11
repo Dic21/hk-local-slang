@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-hk">
 
 <head>
     <meta charset="UTF-8">
@@ -21,7 +21,7 @@
             <div class="category">
                 <div class="search-bar">
                     <div class="search-input">
-                        <input placeholder="搜尋關鍵字" id="search" />
+                        <input placeholder="搜尋關鍵字" id="search" onkeydown="handleKeyDownSearch(event)"/>
                         <div id="search-btn" onclick="handleSearch()"><img id="magnifier" src="./img/search.svg"></div>
                     </div>
 
@@ -117,7 +117,7 @@
                 <div class="main-content">
                     <p>點撃查閱俚語資料</p>
 
-                    <p>為了確保您能獲得最佳的環境及體驗，請使用Google Chrome最新版本瀏覽器</p>
+                    <p>為了確保您能獲得最佳的環境及體驗，請使用Google Chrome桌面版最新版本瀏覽器</p>
 
                 </div>
                 <div>最後更新日期: 2022年12月</div>
@@ -152,6 +152,12 @@
             const resultBox = document.querySelector(".result");
             main.classList.remove("is-searching");
             resultBox.classList.add("is-searching");
+        }
+
+        function handleKeyDownSearch(e){
+            if(e.key === "Enter"){
+                handleSearch();
+            }
         }
 
         function handleSearch(){
@@ -217,6 +223,13 @@
             recognition.addEventListener('start', () => {
                 btn.innerHTML = "分析中...";
             });
+            setTimeout(()=>{
+                recognition.stop();
+                btn.innerHTML = `
+                    語音搜尋
+                    <img src="./img/mic-fill.svg">
+                `
+            }, 9000)
         }
 
         function handleExpandCate(){
