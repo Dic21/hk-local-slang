@@ -38,16 +38,6 @@
                             <img id="arrow-trend" class="title-arrow" width="30px" src="./img/arrow.svg">
                         </div>
                         <ul class="word-list trend">
-                            <li><a href="世一" onclick="handleClick(event)">世一</a></li>
-                            <li><a href="Famj" onclick="handleClick(event)">Famj</a></li>
-                            <li><a href="Firm" onclick="handleClick(event)">Firm</a></li>
-                            <li><a href="Kick" onclick="handleClick(event)">Kick</a></li>
-                            <li><a href="MM7" onclick="handleClick(event)">MM7</a></li>
-                            <li><a href="siu4" onclick="handleClick(event)">siu4</a></li>
-                            <li><a href="好kam" onclick="handleClick(event)">好kam</a></li>
-                            <li><a href="大癲" onclick="handleClick(event)">大癲</a></li>
-                            <li><a href="張中和" onclick="handleClick(event)">張中和</a></li>
-                            <li><a href="0尊" onclick="handleClick(event)">0尊</a></li>
                         </ul>
                     </div>
 
@@ -56,16 +46,6 @@
                             <img id="arrow-work" class="title-arrow" width="30px" src="./img/arrow.svg">
                         </div>
                         <ul class="word-list work">
-                            <li><a href="射波" onclick="handleClick(event)">射波</a></li>
-                            <li><a href="捽數" onclick="handleClick(event)">捽數</a></li>
-                            <li><a href="秘撈" onclick="handleClick(event)">秘撈 </a></li>
-                            <li><a href="炒散" onclick="handleClick(event)">炒散</a></li>
-                            <li><a href="收爐" onclick="handleClick(event)">收爐</a></li>
-                            <li><a href="散水餅" onclick="handleClick(event)">散水餅</a></li>
-                            <li><a href="炒魷魚" onclick="handleClick(event)">炒魷魚</a></li>
-                            <li><a href="鐵飯碗" onclick="handleClick(event)">鐵飯碗</a></li>
-                            <li><a href="燉冬菇" onclick="handleClick(event)">燉冬菇</a></li>
-                            <li><a href="騎牛搵馬" onclick="handleClick(event)">騎牛搵馬</a></li>
                         </ul>
                     </div>
 
@@ -74,16 +54,6 @@
                             <img id="arrow-food" class="title-arrow" width="30px" src="./img/arrow.svg">
                         </div>
                         <ul class="word-list food">
-                            <li><a href="水魚" onclick="handleClick(event)">水魚</a></li>
-                            <li><a href="燉冬菇" onclick="handleClick(event)">燉冬菇</a></li>
-                            <li><a href="炒魷魚" onclick="handleClick(event)">炒魷魚</a></li>
-                            <li><a href="食豆腐" onclick="handleClick(event)">食豆腐</a></li>
-                            <li><a href="食塞米" onclick="handleClick(event)">食塞米</a></li>
-                            <li><a href="食檸檬" onclick="handleClick(event)">食檸檬</a></li>
-                            <li><a href="重口味" onclick="handleClick(event)">重口味</a></li>
-                            <li><a href="煲電話粥" onclick="handleClick(event)">煲電話粥</a></li>
-                            <li><a href="冬瓜豆腐" onclick="handleClick(event)">冬瓜豆腐</a></li>
-                            <li><a href="食鹽多過你食米" onclick="handleClick(event)">食鹽多過你食米</a></li>
                         </ul>
                     </div>
 
@@ -92,18 +62,6 @@
                             <img id="arrow-life" class="title-arrow" width="30px" src="./img/arrow.svg">
                         </div>
                         <ul class="word-list life">
-                            <li><a href="伏" onclick="handleClick(event)">伏</a></li>
-                            <li><a href="hea" onclick="handleClick(event)">hea</a></li>
-                            <li><a href="大鑊" onclick="handleClick(event)">大鑊</a></li>
-                            <li><a href="攞命" onclick="handleClick(event)">攞命</a></li>
-                            <li><a href="戴綠帽" onclick="handleClick(event)">戴綠帽</a></li>
-                            <li><a href="落狗屎" onclick="handleClick(event)">落狗屎</a></li>
-                            <li><a href="放飛機" onclick="handleClick(event)">放飛機</a></li>
-                            <li><a href="臭崩崩" onclick="handleClick(event)">臭崩崩</a></li>
-                            <li><a href="無啦啦" onclick="handleClick(event)">無啦啦</a></li>
-                            <li><a href="濕濕碎" onclick="handleClick(event)">濕濕碎</a></li>
-                            <li><a href="食死貓" onclick="handleClick(event)">食死貓</a></li>
-                            <li><a href="攞景定贈慶" onclick="handleClick(event)">攞景定贈慶</a></li>
                         </ul>
                     </div>
                 </div>    
@@ -127,6 +85,28 @@
 
     <script src="./data.js"></script>
     <script>
+        dataInit();
+
+        function dataInit(){
+            //load the left content
+            const cateList = ['trend', 'work','food', 'life'];
+            const wordListArea = document.querySelectorAll(".word-list");
+            for (let i = 0; i < cateList.length; i++){
+                let template = "";
+                //filter and sort wordList
+                let wordList = dict.filter((word)=>{return word.cate.includes(cateList[i])}).sort((a,b)=>{
+                    return a.word.length - b.word.length;
+                });
+                console.log(wordList);
+                for(let j = 0; j < wordList.length; j++){
+                    template += `<li><a href="${wordList[j].word}" onclick="handleClick(event)">${wordList[j].word}</a></li>`
+                }
+                //innerHTML
+                let container = document.querySelector(`.word-list.${cateList[i]}`);
+                container.innerHTML = template;
+            }   
+        }
+
         const synth = window.speechSynthesis;
         const recognition = window.SpeechRecognition || window.webkitSpeechRecognition;
         function speak(text) {
